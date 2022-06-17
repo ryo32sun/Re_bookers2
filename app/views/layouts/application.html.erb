@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReBookers2App</title>
+    <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,67 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to "Bookers" ,root_path ,class:"navbar-brand" %>
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to root_path ,class:"nav-link text-light" do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  users_path , class:"nav-link text-light" do %>
+                  <i class="fas fa-users"></i> Users
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  books_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-book-open"></i> Books
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  destroy_user_session_path,method: :delete, class:"nav-link text-light" do %>
+                  <i class="fas fa-sign-out-alt"></i> Log out
+                <% end %>
+              </li>
+              
+            <% else %>
+            
+              <li class="nav-item">
+                <%= link_to root_path ,class:"nav-link text-light" do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  about_path , class:"nav-link text-light" do %>
+                  <i class="fas fa-link"></i> About
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  new_user_registration_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-user-plus"></i> Sign up
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  new_user_session_path, class:"nav-link text-light" do %>
+                  <i class="fas fa-sign-in-alt"></i> Log in
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+      </nav>
+    </header>
+    <p id="notice"></p>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <p class="mx-auto">CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
