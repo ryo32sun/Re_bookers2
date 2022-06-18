@@ -18,7 +18,7 @@
           <ul class="navbar-nav">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to root_path ,class:"nav-link text-light" do %>
+                <%= link_to user_path(current_user.id) ,class:"nav-link text-light" do %>
                   <i class="fas fa-home"></i> Home
                 <% end %>
               </li>
@@ -64,6 +64,7 @@
           </ul>
       </nav>
     </header>
+    <%= flash[:notice] %>
     <p id="notice"></p>
     <%= yield %>
     <footer>
